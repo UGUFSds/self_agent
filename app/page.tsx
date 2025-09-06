@@ -3,6 +3,8 @@ import StarBorder from '../components/StarBorder';
 import ShinyText from '../components/ShinyText';
 import FluidGlassInput from '../components/FluidGlassInput';
 import CardNav from '../components/CardNav';
+import LogoLoop from '../components/LogoLoop';
+import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiJavascript, SiNodedotjs } from 'react-icons/si';
 
 export default function Home() {
   const navItems = [
@@ -62,8 +64,7 @@ export default function Home() {
         {/* 主题文字、搜索框和按钮 */}
         <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center text-white font-bold leading-tight pointer-events-none">
           <div className="mb-6 mt-12">
-            <div className="text-3xl mb-2">The most powerful</div>
-            <div className="text-3xl mb-2">agent is coming,</div>
+            <div className="text-3xl mb-2">The most powerful agent is coming</div>
             <div className="text-3xl mb-4">stay tuned!</div>
           </div>
           
@@ -99,6 +100,54 @@ export default function Home() {
           rotateOnHover={true}
           hue={0}
           forceHoverState={false}
+        />
+      </div>
+      
+      {/* LogoLoop 组件 - 页面右下方 */}
+      <div className="absolute bottom-10 right-10 z-20 w-80">
+        <LogoLoop
+          logos={[
+            { 
+              node: <SiReact className="text-white" size={32} />, 
+              title: "React", 
+              href: "https://react.dev" 
+            },
+            { 
+              node: <SiNextdotjs className="text-white" size={32} />, 
+              title: "Next.js", 
+              href: "https://nextjs.org" 
+            },
+            { 
+              node: <SiTypescript className="text-white" size={32} />, 
+              title: "TypeScript", 
+              href: "https://www.typescriptlang.org" 
+            },
+            { 
+              node: <SiTailwindcss className="text-white" size={32} />, 
+              title: "Tailwind CSS", 
+              href: "https://tailwindcss.com" 
+            },
+            { 
+              node: <SiJavascript className="text-white" size={32} />, 
+              title: "JavaScript", 
+              href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" 
+            },
+            { 
+              node: <SiNodedotjs className="text-white" size={32} />, 
+              title: "Node.js", 
+              href: "https://nodejs.org" 
+            },
+          ]}
+          speed={80}
+          direction="left"
+          logoHeight={40}
+          gap={48}
+          pauseOnHover={true}
+          fadeOut={true}
+          fadeOutColor="#000000"
+          scaleOnHover={true}
+          className="px-4"
+          ariaLabel="Technology stack"
         />
       </div>
     </div>

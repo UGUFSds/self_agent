@@ -163,8 +163,7 @@ const CardNav: React.FC<CardNavProps> = ({
     >
       <nav
         ref={navRef}
-        className={`card-nav ${isExpanded ? 'open' : ''} block h-[60px] p-0 rounded-xl shadow-md relative overflow-hidden will-change-[height]`}
-        style={{ backgroundColor: baseColor }}
+        className={`card-nav ${isExpanded ? 'open' : ''} block h-[60px] p-0 rounded-xl shadow-md relative overflow-hidden will-change-[height] backdrop-blur-md bg-white/10 border border-white/20`}
       >
         <div className="card-nav-top absolute inset-x-0 top-0 h-[60px] flex items-center justify-between p-2 pl-[1.1rem] z-[2]">
           <div
@@ -193,8 +192,8 @@ const CardNav: React.FC<CardNavProps> = ({
 
           <button
             type="button"
-            className="card-nav-cta-button hidden md:inline-flex items-center justify-center border-0 rounded-[calc(0.75rem-0.2rem)] px-4 py-2 font-medium cursor-pointer transition-colors duration-300"
-            style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
+            className="card-nav-cta-button hidden md:inline-flex items-center justify-center border-0 rounded-[calc(0.75rem-0.2rem)] px-4 py-2 font-medium cursor-pointer transition-colors duration-300 backdrop-blur-sm bg-white/20 border border-white/30"
+            style={{ color: buttonTextColor }}
           >
             Doc
           </button>
@@ -209,9 +208,9 @@ const CardNav: React.FC<CardNavProps> = ({
           {(items || []).slice(0, 3).map((item, idx) => (
             <div
               key={`${item.label}-${idx}`}
-              className="nav-card select-none relative flex flex-col gap-2 p-[12px_16px] rounded-[calc(0.75rem-0.2rem)] min-w-0 flex-[1_1_auto] h-auto min-h-[60px] md:h-full md:min-h-0 md:flex-[1_1_0%]"
+              className="nav-card select-none relative flex flex-col gap-2 p-[12px_16px] rounded-[calc(0.75rem-0.2rem)] min-w-0 flex-[1_1_auto] h-auto min-h-[60px] md:h-full md:min-h-0 md:flex-[1_1_0%] backdrop-blur-sm bg-white/5 border border-white/10"
               ref={setCardRef(idx)}
-              style={{ backgroundColor: item.bgColor, color: item.textColor }}
+              style={{ color: item.textColor }}
             >
               <div className="nav-card-label font-normal tracking-[-0.5px] text-[18px] md:text-[22px]">
                 {item.label}
