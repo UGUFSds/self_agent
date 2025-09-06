@@ -29,7 +29,7 @@ interface LanyardProps {
 
 export default function Lanyard({
   position = [0, 0, 30],
-  gravity = [0, -40, 0],
+  gravity = [0, -20, 0],
   fov = 20,
   transparent = true
 }: LanyardProps) {
@@ -218,7 +218,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
               drag(new THREE.Vector3().copy(e.point).sub(vec.copy(card.current.translation())));
             }}
           >
-            <primitive object={cardScene.clone()} scale={[0.1, 0.1, 0.1]} />
+            <primitive object={cardScene.clone()} scale={[0.3, 0.3, 0.3]} />
           </group>
         </RigidBody>
       </group>
@@ -226,7 +226,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
         color: "white",
         depthTest: false,
         resolution: isSmall ? [1000, 2000] : [1000, 1000],
-        lineWidth: 1
+        lineWidth: 3
       }))} />
     </>
   );

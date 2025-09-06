@@ -40,8 +40,8 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-black flex items-center justify-center" style={{ backgroundColor: '#000000' }}>
       {/* 可拖拽卡片 - 左上方 */}
-      <div className="absolute top-20 left-20 z-30 w-32 h-40">
-        <Lanyard position={[0, 0, 20]} gravity={[0, -40, 0]} />
+      <div className="absolute top-20 left-20 z-30 w-48 h-60">
+        <Lanyard position={[0, 0, 15]} gravity={[0, -15, 0]} />
       </div>
 
       {/* CardNav 菜单 */}
