@@ -17,11 +17,8 @@ import * as THREE from 'three';
 // Extend Three.js with MeshLine components
 extend({ MeshLineGeometry, MeshLineMaterial });
 
-// replace with your own imports, see the usage snippet for details
-// import cardGLB from './card.glb';
-// import lanyard from './lanyard.png';
-
-extend({ MeshLineGeometry, MeshLineMaterial });
+// Import the actual 3D model
+const cardGLB = '/card.glb';
 
 interface LanyardProps {
   position?: [number, number, number];
@@ -110,17 +107,8 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
   };
 
   // const { nodes, materials } = useGLTF(cardGLB) as any;
-  // const texture = useTexture(lanyard);
-  
-  // 创建简单的几何体和材质
-  const cardGeometry = new THREE.BoxGeometry(1.6, 2.25, 0.02);
-  const cardMaterial = new THREE.MeshPhysicalMaterial({
-    color: '#ffffff',
-    clearcoat: 1,
-    clearcoatRoughness: 0.15,
-    roughness: 0.9,
-    metalness: 0.8
-  });
+  // 使用真实的 3D 模型
+  const { scene: cardScene } = useGLTF(cardGLB);
   const [curve] = useState(
     () =>
       new THREE.CatmullRomCurve3([new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()])
@@ -230,7 +218,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
               drag(new THREE.Vector3().copy(e.point).sub(vec.copy(card.current.translation())));
             }}
           >
-            <mesh geometry={cardGeometry} material={cardMaterial} />
+            <primitive object={cardScene.clone()} scale={[0.1, 0.1, 0.1]} />
           </group>
         </RigidBody>
       </group>
