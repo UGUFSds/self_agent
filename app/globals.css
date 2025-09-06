@@ -2,13 +2,25 @@
 @import "tw-animate-css";
 
 @keyframes star-movement-bottom {
-  0% { transform: translate(0%, 0%); opacity: 1; }
-  100% { transform: translate(-100%, 0%); opacity: 0; }
+  0% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-100%, 0%);
+    opacity: 0;
+  }
 }
 
 @keyframes star-movement-top {
-  0% { transform: translate(0%, 0%); opacity: 1; }
-  100% { transform: translate(100%, 0%); opacity: 0; }
+  0% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(100%, 0%);
+    opacity: 0;
+  }
 }
 
 .animate-star-movement-bottom {
@@ -20,8 +32,12 @@
 }
 
 @keyframes shine {
-  0% { background-position: 100%; }
-  100% { background-position: -100%; }
+  0% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: -100%;
+  }
 }
 
 .animate-shine {
@@ -29,14 +45,14 @@
 }
 
 @keyframes wave {
-  0% { 
+  0% {
     transform: translateX(-100%) skewX(-15deg);
     opacity: 0;
   }
-  50% { 
+  50% {
     opacity: 1;
   }
-  100% { 
+  100% {
     transform: translateX(100%) skewX(-15deg);
     opacity: 0;
   }
@@ -45,7 +61,6 @@
 .animate-wave {
   animation: wave 2s ease-in-out infinite;
 }
-
 
 @custom-variant dark (&:is(.dark *));
 
@@ -173,20 +188,20 @@
     transform: scale(1.8) !important;
     transform-origin: center center !important;
   }
-  
+
   /* 确保页面可以滚动查看完整内容 */
   body {
     overflow-x: auto !important;
     overflow-y: auto !important;
   }
-  
+
   /* 调整主容器以适应移动端 */
   .main-container {
     min-width: 100vw !important;
     min-height: 100vh !important;
     overflow: visible !important;
   }
-  
+
   /* 移动端菜单栏调整 */
   .mobile-menu {
     position: fixed !important;
@@ -196,7 +211,7 @@
     transform: none !important;
     z-index: 50 !important;
   }
-  
+
   /* 移动端 LogoLoop 调整 */
   .mobile-logo {
     position: fixed !important;
