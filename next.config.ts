@@ -7,13 +7,6 @@ const nextConfig: NextConfig = {
     unoptimized: true
   },
   assetPrefix: process.env.NODE_ENV === 'production' ? '' : '',
-  webpack: (config) => {
-    config.module.rules.push({
-      test: /\.(glb|gltf)$/,
-      type: 'asset/resource',
-    });
-    return config;
-  },
 };
 
 export default nextConfig;

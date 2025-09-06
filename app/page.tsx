@@ -3,7 +3,6 @@ import StarBorder from '../components/StarBorder';
 import ShinyText from '../components/ShinyText';
 import FluidGlassInput from '../components/FluidGlassInput';
 import CardNav from '../components/CardNav';
-import Lanyard from '../components/Lanyard';
 
 export default function Home() {
   const navItems = [
@@ -39,10 +38,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-black flex items-center justify-center" style={{ backgroundColor: '#000000' }}>
-      {/* 可拖拽卡片 - 左上方 */}
-      <div className="absolute top-20 left-20 z-30 w-48 h-60">
-        <Lanyard position={[0, 0, 15]} gravity={[0, -15, 0]} />
-      </div>
 
       {/* CardNav 菜单 */}
       <CardNav
