@@ -14,6 +14,9 @@ import {
 import { MeshLineGeometry, MeshLineMaterial } from 'meshline';
 import * as THREE from 'three';
 
+// Extend Three.js with MeshLine components
+extend({ MeshLineGeometry, MeshLineMaterial });
+
 // replace with your own imports, see the usage snippet for details
 // import cardGLB from './card.glb';
 // import lanyard from './lanyard.png';
@@ -231,15 +234,12 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
           </group>
         </RigidBody>
       </group>
-      <mesh ref={band}>
-        <meshLineGeometry />
-        <meshLineMaterial
-          color="white"
-          depthTest={false}
-          resolution={isSmall ? [1000, 2000] : [1000, 1000]}
-          lineWidth={1}
-        />
-      </mesh>
+      <primitive ref={band} object={new THREE.Mesh(new MeshLineGeometry(), new MeshLineMaterial({
+        color: "white",
+        depthTest: false,
+        resolution: isSmall ? [1000, 2000] : [1000, 1000],
+        lineWidth: 1
+      }))} />
     </>
   );
 }

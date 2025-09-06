@@ -1,0 +1,9 @@
+name = "agent-landing-page"
+compatibility_date = "2024-01-15"
+
+[env.production]
+name = "agent-landing-page"
+
+[[env.production.routes]]
+pattern = "your-domain.com/*"
+zone_name = "your-domain.com"
