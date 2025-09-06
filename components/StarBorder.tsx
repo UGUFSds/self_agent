@@ -5,20 +5,20 @@ type StarBorderProps<T extends React.ElementType> = React.ComponentPropsWithoutR
   className?: string;
   children?: React.ReactNode;
   color?: string;
-  speed?: React.CSSProperties['animationDuration'];
+  speed?: React.CSSProperties["animationDuration"];
   thickness?: number;
 };
 
-const StarBorder = <T extends React.ElementType = 'button'>({
+const StarBorder = <T extends React.ElementType = "button">({
   as,
-  className = '',
-  color = 'white',
-  speed = '6s',
+  className = "",
+  color = "white",
+  speed = "6s",
   thickness = 1,
   children,
   ...rest
 }: StarBorderProps<T>) => {
-  const Component = as || 'button';
+  const Component = as || "button";
 
   return (
     <Component

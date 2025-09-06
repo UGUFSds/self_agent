@@ -31,11 +31,11 @@ const FluidGlassInput: React.FC<FluidGlassInputProps> = ({
         className="absolute inset-0 rounded-2xl"
         style={{
           background: isFocused 
-            ? 'linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05))'
-            : 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02))',
-          backdropFilter: 'blur(10px)',
-          border: '1px solid rgba(255,255,255,0.1)',
-          transition: 'all 0.3s ease'
+            ? "linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05))"
+            : "linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02))",
+          backdropFilter: "blur(10px)",
+          border: "1px solid rgba(255,255,255,0.1)",
+          transition: "all 0.3s ease"
         }}
       />
       

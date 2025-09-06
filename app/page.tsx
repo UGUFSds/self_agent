@@ -1,9 +1,9 @@
-import Orb from '../components/Orb';
-import StarBorder from '../components/StarBorder';
-import ShinyText from '../components/ShinyText';
-import FluidGlassInput from '../components/FluidGlassInput';
-import CardNav from '../components/CardNav';
-import LogoLoop from '../components/LogoLoop';
+import Orb from '@/components/Orb';
+import StarBorder from '@/components/StarBorder';
+import ShinyText from '@/components/ShinyText';
+import FluidGlassInput from '@/components/FluidGlassInput';
+import CardNav from '@/components/CardNav';
+import LogoLoop from '@/components/LogoLoop';
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiJavascript, SiNodedotjs } from 'react-icons/si';
 
 export default function Home() {
@@ -39,19 +39,30 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center" style={{ backgroundColor: '#000000' }}>
+    <div className="min-h-screen bg-black flex items-center justify-center" style={{ backgroundColor: "#000000" }}>
 
-      {/* CardNav 菜单 */}
-      <CardNav
-        logo="/logo.svg"
-        logoAlt="Agent Logo"
-        items={navItems}
-        baseColor="#1a1a1a"
-        menuColor="#fff"
-        buttonBgColor="#ffffff"
-        buttonTextColor="#000000"
-        ease="power3.out"
-      />
+      {/* 菜单栏和 API 字样容器 */}
+      <div className="absolute top-6 left-1/2 transform -translate-x-1/2 w-full max-w-[900px] flex items-start z-30">
+        <CardNav
+          logo="/logo.svg"
+          logoAlt="Agent Logo"
+          items={navItems}
+          baseColor="#1a1a1a"
+          menuColor="#fff"
+          buttonBgColor="#ffffff"
+          buttonTextColor="#000000"
+          ease="power3.out"
+        />
+        <div className="ml-8 flex items-center h-[60px] mt-7">
+          <div className="cursor-pointer transition-all duration-300 hover:scale-105 hover:opacity-80">
+            <ShinyText 
+              text="API" 
+              speed={2}
+              className="text-gray-600 text-2xl font-normal"
+            />
+          </div>
+        </div>
+      </div>
 
       <div 
         className="relative"
@@ -64,8 +75,8 @@ export default function Home() {
         {/* 主题文字、搜索框和按钮 */}
         <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center text-white font-bold leading-tight pointer-events-none">
           <div className="mb-6 mt-12">
-            <div className="text-3xl mb-2">The most powerful agent is coming</div>
-            <div className="text-3xl mb-4">stay tuned!</div>
+            <div className="text-2xl mb-2">The most powerful agent is coming</div>
+            <div className="text-2xl mb-4">stay tuned!</div>
           </div>
           
           {/* 搜索框 */}
@@ -108,32 +119,32 @@ export default function Home() {
         <LogoLoop
           logos={[
             { 
-              node: <SiReact className="text-white" size={32} />, 
+              node: <SiReact className="text-white" size={28} />, 
               title: "React", 
               href: "https://react.dev" 
             },
             { 
-              node: <SiNextdotjs className="text-white" size={32} />, 
+              node: <SiNextdotjs className="text-white" size={28} />, 
               title: "Next.js", 
               href: "https://nextjs.org" 
             },
             { 
-              node: <SiTypescript className="text-white" size={32} />, 
+              node: <SiTypescript className="text-white" size={28} />, 
               title: "TypeScript", 
               href: "https://www.typescriptlang.org" 
             },
             { 
-              node: <SiTailwindcss className="text-white" size={32} />, 
+              node: <SiTailwindcss className="text-white" size={28} />, 
               title: "Tailwind CSS", 
               href: "https://tailwindcss.com" 
             },
             { 
-              node: <SiJavascript className="text-white" size={32} />, 
+              node: <SiJavascript className="text-white" size={28} />, 
               title: "JavaScript", 
               href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" 
             },
             { 
-              node: <SiNodedotjs className="text-white" size={32} />, 
+              node: <SiNodedotjs className="text-white" size={28} />, 
               title: "Node.js", 
               href: "https://nodejs.org" 
             },

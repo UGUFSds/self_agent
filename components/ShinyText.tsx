@@ -7,19 +7,18 @@ interface ShinyTextProps {
   className?: string;
 }
 
-const ShinyText: React.FC<ShinyTextProps> = ({ text, disabled = false, speed = 5, className = '' }) => {
+const ShinyText: React.FC<ShinyTextProps> = ({ text, disabled = false, speed = 5, className = "" }) => {
   const animationDuration = `${speed}s`;
 
   return (
     <div
-      className={`bg-clip-text inline-block ${className}`}
+      className={`bg-clip-text inline-block ${disabled ? "" : "animate-shine"} ${className}`}
       style={{
         backgroundImage:
-          'linear-gradient(120deg, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 80%)',
-        backgroundSize: '200% 100%',
-        WebkitBackgroundClip: 'text',
-        animation: disabled ? 'none' : `shine ${animationDuration} linear infinite`,
-        backgroundPosition: '100%'
+          "linear-gradient(120deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 70%)",
+        backgroundSize: "200% 100%",
+        WebkitBackgroundClip: "text",
+        animationDuration: animationDuration
       }}
     >
       {text}
