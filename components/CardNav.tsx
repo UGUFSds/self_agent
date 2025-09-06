@@ -28,6 +28,7 @@ export interface CardNavProps {
   menuColor?: string;
   buttonBgColor?: string;
   buttonTextColor?: string;
+  rightContent?: React.ReactNode;
 }
 
 const CardNav: React.FC<CardNavProps> = ({
@@ -39,7 +40,8 @@ const CardNav: React.FC<CardNavProps> = ({
   baseColor = '#fff',
   menuColor,
   buttonBgColor,
-  buttonTextColor
+  buttonTextColor,
+  rightContent
 }) => {
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -187,16 +189,22 @@ const CardNav: React.FC<CardNavProps> = ({
           </div>
 
           <div className="logo-container flex items-center md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 order-1 md:order-none">
-            <img src={logo} alt={logoAlt} className="logo h-[28px]" />
+            <img src={logo} alt={logoAlt} className="logo h-[72px] brightness-0 drop-shadow-[0_0_1px_rgba(0,0,0,0.8)] transition-transform duration-500 ease-in-out hover:rotate-360" />
           </div>
 
-          <button
-            type="button"
-            className="card-nav-cta-button hidden md:inline-flex items-center justify-center border-0 rounded-[calc(0.75rem-0.2rem)] px-4 py-2 font-medium cursor-pointer transition-colors duration-300 backdrop-blur-sm bg-white/20 border border-white/30"
-            style={{ color: buttonTextColor }}
-          >
-            Doc
-          </button>
+          {rightContent ? (
+            <div className="hidden md:flex items-center">
+              {rightContent}
+            </div>
+          ) : (
+            <button
+              type="button"
+              className="card-nav-cta-button hidden md:inline-flex items-center justify-center border-0 rounded-[calc(0.75rem-0.2rem)] px-4 py-2 font-medium cursor-pointer transition-colors duration-300 backdrop-blur-sm bg-white/20 border border-white/30"
+              style={{ color: buttonTextColor }}
+            >
+              Doc
+            </button>
+          )}
         </div>
 
         <div
