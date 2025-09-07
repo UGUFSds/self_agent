@@ -1,11 +1,13 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Orb from "@/components/Orb";
 import StarBorder from "@/components/StarBorder";
 import ShinyText from "@/components/ShinyText";
 import FluidGlassInput from "@/components/FluidGlassInput";
 import CardNav from "@/components/CardNav";
 import LogoLoop from "@/components/LogoLoop";
+import GlobalSearch from "@/components/GlobalSearch";
 import {
   SiReact,
   SiNextdotjs,
@@ -21,6 +23,24 @@ import { USER_MESSAGES } from "@/constants/messages";
 export default function Home() {
   // 使用常量配置
   const navItems = NAV_ITEMS;
+  
+  // 全局搜索状态
+  const [isGlobalSearchOpen, setIsGlobalSearchOpen] = useState(false);
+
+  // 键盘快捷键支持 (Ctrl+K)
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
+        event.preventDefault();
+        setIsGlobalSearchOpen(true);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
 
   return (
     <div
@@ -95,14 +115,14 @@ export default function Home() {
             </div>
           </div>
 
-          {/* 搜索框 */}
+          {/* AI 大模型输入框 */}
           <div className="pointer-events-auto z-20 mb-4 -mt-2">
             <FluidGlassInput
-              placeholder="Type in anything you want to know..."
+              placeholder="Ask AI anything you want to know..."
               className="w-96 h-10"
               onClick={() => {
-                // TODO: 实现全局搜索功能
-                alert(USER_MESSAGES.search);
+                // TODO: 实现AI大模型对话功能
+                alert(USER_MESSAGES.aiChat);
               }}
             />
           </div>
@@ -177,10 +197,8 @@ export default function Home() {
       <div className={LAYOUT_CONFIG.searchButton.position}>
         <button
           className={LAYOUT_CONFIG.searchButton.className}
-          onClick={() => {
-            // TODO: 实现全局搜索功能
-            alert(USER_MESSAGES.search);
-          }}
+          onClick={() => setIsGlobalSearchOpen(true)}
+          title="全局搜索 (Ctrl+K)"
         >
           <svg
             className="w-6 h-6 text-white"
@@ -248,6 +266,15 @@ export default function Home() {
           ariaLabel="Technology stack"
         />
       </div>
+
+      {/* 全局搜索组件 */}
+      <GlobalSearch
+        isOpen={isGlobalSearchOpen}
+        onClose={() => setIsGlobalSearchOpen(false)}
+        onSearch={(_query) => {
+          // TODO: 实现全局搜索逻辑
+        }}
+      />
     </div>
   );
 }
