@@ -147,24 +147,13 @@ const GlobalSearch: React.FC<GlobalSearchProps> = ({
     console.log("导航到:", result.url);
   };
 
-  // 处理外部点击关闭
+  // 聚焦到输入框
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
-        onClose();
-      }
-    };
-
     if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
       // 聚焦到输入框
       setTimeout(() => inputRef.current?.focus(), 100);
     }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isOpen, onClose]);
+  }, [isOpen]);
 
   // 处理 ESC 键关闭
   useEffect(() => {
@@ -187,15 +176,19 @@ const GlobalSearch: React.FC<GlobalSearchProps> = ({
 
   return (
     <div
-      ref={searchRef}
       className={cn(
         "fixed inset-0 z-50 bg-black/80 backdrop-blur-sm",
         "flex items-start justify-center pt-20",
         className
       )}
+      onClick={onClose}
       {...props}
     >
-      <div className="w-full max-w-2xl mx-4">
+      <div 
+        ref={searchRef}
+        className="w-full max-w-2xl mx-4"
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* 搜索输入框 */}
         <div className="relative">
           <div className="relative">
