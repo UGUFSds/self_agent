@@ -229,13 +229,8 @@ const GlobalSearch: React.FC<GlobalSearchProps> = ({
                     className={cn(
                       "group px-6 py-4 border-b border-white/10 cursor-pointer transition-all duration-300",
                       "hover:bg-white/10 hover:scale-[1.01] hover:shadow-lg hover:shadow-white/5",
-                      "animate-in slide-in-from-left-2 fade-in",
                       index === selectedIndex && "bg-white/15 scale-[1.01] shadow-lg shadow-white/5"
                     )}
-                    style={{
-                      animationDelay: `${index * 50}ms`,
-                      animationDuration: "400ms"
-                    }}
                     onClick={() => handleResultClick(result)}
                   >
                     <div className="flex items-start gap-3">
@@ -279,14 +274,14 @@ const GlobalSearch: React.FC<GlobalSearchProps> = ({
                 ))}
               </div>
             ) : (
-              <div className="px-6 py-8 text-center animate-in fade-in duration-500">
+              <div className="px-6 py-8 text-center">
                 <svg className="w-12 h-12 text-white/30 mx-auto mb-3 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
-                <p className="text-white/60 animate-in slide-in-from-bottom-2 fade-in duration-500 delay-200">
+                <p className="text-white/60">
                   {isSearching ? "搜索中..." : "未找到相关结果"}
                 </p>
-                <p className="text-white/40 text-sm mt-1 animate-in slide-in-from-bottom-2 fade-in duration-500 delay-300">
+                <p className="text-white/40 text-sm mt-1">
                   尝试使用不同的关键词
                 </p>
               </div>
@@ -296,13 +291,13 @@ const GlobalSearch: React.FC<GlobalSearchProps> = ({
 
         {/* 搜索提示 */}
         {!searchQuery && (
-          <div className="mt-6 text-center animate-in slide-in-from-bottom-4 fade-in duration-700 delay-300">
+          <div className="mt-6 text-center">
             <div className="grid grid-cols-2 gap-4 max-w-md mx-auto">
-              <div className="px-4 py-3 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 hover:scale-105 transition-all duration-300 animate-in slide-in-from-left-2 fade-in delay-400">
+              <div className="px-4 py-3 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 hover:scale-105 transition-all duration-300">
                 <div className="text-white/60 text-sm mb-1">快捷键</div>
                 <div className="text-white/40 text-xs">Ctrl + K</div>
               </div>
-              <div className="px-4 py-3 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 hover:scale-105 transition-all duration-300 animate-in slide-in-from-right-2 fade-in delay-500">
+              <div className="px-4 py-3 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 hover:scale-105 transition-all duration-300">
                 <div className="text-white/60 text-sm mb-1">搜索范围</div>
                 <div className="text-white/40 text-xs">全站内容</div>
               </div>
