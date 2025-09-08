@@ -195,7 +195,7 @@ const GlobalSearch: React.FC<GlobalSearchProps> = ({
         onClick={(e) => e.stopPropagation()}
       >
         {/* 搜索输入框 */}
-        <div className="relative animate-in slide-in-from-top-2 fade-in duration-500 delay-100">
+        <div className="relative">
           <div className="relative">
             <input
               ref={inputRef}
@@ -220,7 +220,7 @@ const GlobalSearch: React.FC<GlobalSearchProps> = ({
 
         {/* 搜索结果 */}
         {searchQuery && (
-          <div className="mt-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl overflow-hidden animate-in slide-in-from-top-2 fade-in duration-500 delay-200">
+          <div className="mt-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl overflow-hidden">
             {searchResults.length > 0 ? (
               <div className="max-h-96 overflow-y-auto">
                 {searchResults.map((result, index) => (
