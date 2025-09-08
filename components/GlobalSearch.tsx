@@ -179,6 +179,7 @@ const GlobalSearch: React.FC<GlobalSearchProps> = ({
       className={cn(
         "fixed inset-0 z-50 bg-black/80 backdrop-blur-sm",
         "flex items-start justify-center pt-20",
+        "animate-in fade-in duration-300",
         className
       )}
       onClick={onClose}
@@ -186,11 +187,15 @@ const GlobalSearch: React.FC<GlobalSearchProps> = ({
     >
       <div 
         ref={searchRef}
-        className="w-full max-w-2xl mx-4"
+        className={cn(
+          "w-full max-w-2xl mx-4",
+          "animate-in slide-in-from-top-4 fade-in zoom-in-95 duration-300",
+          "transform transition-all ease-out"
+        )}
         onClick={(e) => e.stopPropagation()}
       >
         {/* 搜索输入框 */}
-        <div className="relative">
+        <div className="relative animate-in slide-in-from-top-2 fade-in duration-500 delay-100">
           <div className="relative">
             <input
               ref={inputRef}
@@ -199,7 +204,7 @@ const GlobalSearch: React.FC<GlobalSearchProps> = ({
               onChange={handleSearchChange}
               onKeyDown={handleKeyDown}
               placeholder="搜索页面、组件、文档、API..."
-              className="w-full px-6 py-4 text-lg bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/40 transition-all duration-200"
+              className="w-full px-6 py-4 text-lg bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/40 transition-all duration-300 hover:bg-white/15 hover:border-white/30 hover:scale-[1.02] focus:scale-[1.02]"
             />
             <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
               {isSearching ? (
@@ -215,38 +220,43 @@ const GlobalSearch: React.FC<GlobalSearchProps> = ({
 
         {/* 搜索结果 */}
         {searchQuery && (
-          <div className="mt-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl overflow-hidden">
+          <div className="mt-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl overflow-hidden animate-in slide-in-from-top-2 fade-in duration-500 delay-200">
             {searchResults.length > 0 ? (
               <div className="max-h-96 overflow-y-auto">
                 {searchResults.map((result, index) => (
                   <div
                     key={result.id}
                     className={cn(
-                      "px-6 py-4 border-b border-white/10 cursor-pointer transition-all duration-150",
-                      "hover:bg-white/10",
-                      index === selectedIndex && "bg-white/15"
+                      "group px-6 py-4 border-b border-white/10 cursor-pointer transition-all duration-300",
+                      "hover:bg-white/10 hover:scale-[1.01] hover:shadow-lg hover:shadow-white/5",
+                      "animate-in slide-in-from-left-2 fade-in",
+                      index === selectedIndex && "bg-white/15 scale-[1.01] shadow-lg shadow-white/5"
                     )}
+                    style={{
+                      animationDelay: `${index * 50}ms`,
+                      animationDuration: "400ms"
+                    }}
                     onClick={() => handleResultClick(result)}
                   >
                     <div className="flex items-start gap-3">
-                      <div className="flex-shrink-0 mt-1">
+                      <div className="flex-shrink-0 mt-1 group-hover:scale-110 transition-transform duration-200">
                         {result.type === "documentation" && (
-                          <svg className="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                          <svg className="w-4 h-4 text-blue-400 group-hover:text-blue-300 transition-colors duration-200" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
                           </svg>
                         )}
                         {result.type === "component" && (
-                          <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                          <svg className="w-4 h-4 text-green-400 group-hover:text-green-300 transition-colors duration-200" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
                           </svg>
                         )}
                         {result.type === "api" && (
-                          <svg className="w-4 h-4 text-purple-400" fill="currentColor" viewBox="0 0 20 20">
+                          <svg className="w-4 h-4 text-purple-400 group-hover:text-purple-300 transition-colors duration-200" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                           </svg>
                         )}
                         {result.type === "page" && (
-                          <svg className="w-4 h-4 text-orange-400" fill="currentColor" viewBox="0 0 20 20">
+                          <svg className="w-4 h-4 text-orange-400 group-hover:text-orange-300 transition-colors duration-200" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
                           </svg>
                         )}
@@ -269,14 +279,14 @@ const GlobalSearch: React.FC<GlobalSearchProps> = ({
                 ))}
               </div>
             ) : (
-              <div className="px-6 py-8 text-center">
-                <svg className="w-12 h-12 text-white/30 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="px-6 py-8 text-center animate-in fade-in duration-500">
+                <svg className="w-12 h-12 text-white/30 mx-auto mb-3 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
-                <p className="text-white/60">
+                <p className="text-white/60 animate-in slide-in-from-bottom-2 fade-in duration-500 delay-200">
                   {isSearching ? "搜索中..." : "未找到相关结果"}
                 </p>
-                <p className="text-white/40 text-sm mt-1">
+                <p className="text-white/40 text-sm mt-1 animate-in slide-in-from-bottom-2 fade-in duration-500 delay-300">
                   尝试使用不同的关键词
                 </p>
               </div>
@@ -286,13 +296,13 @@ const GlobalSearch: React.FC<GlobalSearchProps> = ({
 
         {/* 搜索提示 */}
         {!searchQuery && (
-          <div className="mt-6 text-center">
+          <div className="mt-6 text-center animate-in slide-in-from-bottom-4 fade-in duration-700 delay-300">
             <div className="grid grid-cols-2 gap-4 max-w-md mx-auto">
-              <div className="px-4 py-3 bg-white/5 border border-white/10 rounded-lg">
+              <div className="px-4 py-3 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 hover:scale-105 transition-all duration-300 animate-in slide-in-from-left-2 fade-in delay-400">
                 <div className="text-white/60 text-sm mb-1">快捷键</div>
                 <div className="text-white/40 text-xs">Ctrl + K</div>
               </div>
-              <div className="px-4 py-3 bg-white/5 border border-white/10 rounded-lg">
+              <div className="px-4 py-3 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 hover:scale-105 transition-all duration-300 animate-in slide-in-from-right-2 fade-in delay-500">
                 <div className="text-white/60 text-sm mb-1">搜索范围</div>
                 <div className="text-white/40 text-xs">全站内容</div>
               </div>
