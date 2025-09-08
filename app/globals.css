@@ -182,27 +182,27 @@
   }
 }
 
-/* 移动端适配 - 保持原有尺寸，允许滚动查看 */
+/* Mobile adaptation - maintain original size, allow scrolling to view */
 @media (max-width: 768px) {
   .mobile-scale {
     transform: scale(1.8) !important;
     transform-origin: center center !important;
   }
 
-  /* 确保页面可以滚动查看完整内容 */
+  /* Ensure page can scroll to view complete content */
   body {
     overflow-x: auto !important;
     overflow-y: auto !important;
   }
 
-  /* 调整主容器以适应移动端 */
+  /* Adjust main container for mobile */
   .main-container {
     min-width: 100vw !important;
     min-height: 100vh !important;
     overflow: visible !important;
   }
 
-  /* 移动端菜单栏调整 */
+  /* Mobile menu bar adjustments */
   .mobile-menu {
     position: fixed !important;
     top: 1rem !important;
@@ -212,7 +212,7 @@
     z-index: 50 !important;
   }
 
-  /* 移动端 LogoLoop 调整 */
+  /* Mobile LogoLoop adjustments */
   .mobile-logo {
     position: fixed !important;
     bottom: 1rem !important;

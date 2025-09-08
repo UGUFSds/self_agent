@@ -1,4 +1,4 @@
-// UI 相关常量
+// UI related constants
 export const BRAND_CONFIG = {
   name: "Amphi",
   fontFamily: "Arial, sans-serif",

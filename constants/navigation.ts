@@ -1,4 +1,4 @@
-// 导航菜单配置
+// Navigation menu configuration
 export const NAV_ITEMS = [
   {
     label: "About",
@@ -30,7 +30,7 @@ export const NAV_ITEMS = [
   },
 ];
 
-// Logo 配置
+// Logo configuration
 export const LOGO_ITEMS = [
   {
     node: "React",

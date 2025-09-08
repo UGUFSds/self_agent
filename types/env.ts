@@ -1,24 +1,24 @@
-// 环境变量类型定义
+// Environment variable type definitions
 export interface EnvConfig {
-  // API 配置
+  // API configuration
   API_BASE_URL: string;
   API_TIMEOUT: number;
 
-  // 应用配置
+  // Application configuration
   APP_NAME: string;
   APP_VERSION: string;
   APP_ENV: "development" | "staging" | "production";
 
-  // 功能开关
+  // Feature flags
   ENABLE_ANALYTICS: boolean;
   ENABLE_DEBUG: boolean;
 
-  // 第三方服务
+  // Third-party services
   GOOGLE_ANALYTICS_ID?: string;
   SENTRY_DSN?: string;
 }
 
-// 环境变量验证
+// Environment variable validation
 export const validateEnv = (): EnvConfig => {
   const requiredVars = ["NEXT_PUBLIC_API_BASE_URL"] as const;
 

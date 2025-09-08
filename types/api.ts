@@ -1,4 +1,4 @@
-// API 响应类型定义
+// API response type definitions
 export interface ApiResponse<T = unknown> {
   data: T;
   success: boolean;
@@ -7,14 +7,14 @@ export interface ApiResponse<T = unknown> {
   timestamp?: string;
 }
 
-// API 错误类型
+// API error types
 export interface ApiErrorData {
   code: string;
   message: string;
   details?: unknown;
 }
 
-// 分页响应类型
+// Pagination response types
 export interface PaginatedResponse<T> extends ApiResponse<T[]> {
   pagination: {
     page: number;
@@ -24,7 +24,7 @@ export interface PaginatedResponse<T> extends ApiResponse<T[]> {
   };
 }
 
-// 搜索相关类型
+// Search related types
 export interface SearchRequest {
   query: string;
   filters?: Record<string, unknown>;
@@ -41,7 +41,7 @@ export interface SearchResult {
   metadata?: Record<string, unknown>;
 }
 
-// 用户相关类型
+// User related types
 export interface User {
   id: string;
   email: string;
@@ -51,7 +51,7 @@ export interface User {
   updatedAt: string;
 }
 
-// 认证相关类型
+// Authentication related types
 export interface AuthRequest {
   email: string;
   password: string;

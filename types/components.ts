@@ -1,24 +1,24 @@
 import { BaseComponentProps } from "./global";
 
-// 标准组件基础接口
+// Standard component base interface
 export interface StandardComponentProps extends BaseComponentProps {
-  // 通用事件处理器
+  // Common event handlers
   onClick?: (event: React.MouseEvent) => void;
   onMouseEnter?: (event: React.MouseEvent) => void;
   onMouseLeave?: (event: React.MouseEvent) => void;
   onFocus?: (event: React.FocusEvent) => void;
   onBlur?: (event: React.FocusEvent) => void;
 
-  // 通用状态
+  // Common state
   disabled?: boolean;
   loading?: boolean;
 
-  // 通用样式
+  // Common styles
   size?: "xs" | "sm" | "md" | "lg" | "xl";
   variant?: "default" | "primary" | "secondary" | "ghost" | "outline";
 }
 
-// 输入组件接口
+// Input component interface
 export interface InputComponentProps extends StandardComponentProps {
   value?: string;
   defaultValue?: string;
@@ -31,7 +31,7 @@ export interface InputComponentProps extends StandardComponentProps {
   minLength?: number;
 }
 
-// 按钮组件接口
+// Button component interface
 export interface ButtonComponentProps extends StandardComponentProps {
   type?: "button" | "submit" | "reset";
   href?: string;
@@ -39,7 +39,7 @@ export interface ButtonComponentProps extends StandardComponentProps {
   rel?: string;
 }
 
-// 动画组件接口
+// Animation component interface
 export interface AnimatedComponentProps extends StandardComponentProps {
   animationDuration?: number;
   animationDelay?: number;
@@ -48,7 +48,7 @@ export interface AnimatedComponentProps extends StandardComponentProps {
   loop?: boolean;
 }
 
-// 响应式组件接口
+// Responsive component interface
 export interface ResponsiveComponentProps extends StandardComponentProps {
   mobile?: Partial<StandardComponentProps>;
   tablet?: Partial<StandardComponentProps>;

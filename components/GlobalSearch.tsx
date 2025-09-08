@@ -34,51 +34,51 @@ const GlobalSearch: React.FC<GlobalSearchProps> = ({
   const inputRef = useRef<HTMLInputElement>(null);
   const searchRef = useRef<HTMLDivElement>(null);
 
-  // 模拟搜索数据
+  // Mock search data
   const mockSearchData: SearchResult[] = [
     {
       id: "1",
-      title: "项目架构文档",
-      description: "了解项目的整体架构和技术栈",
+      title: "Project Architecture Documentation",
+      description: "Learn about the overall project architecture and tech stack",
       type: "documentation",
       url: "/docs/architecture",
-      category: "文档"
+      category: "Documentation"
     },
     {
       id: "2",
-      title: "组件开发规范",
-      description: "学习如何开发新的组件",
+      title: "Component Development Standards",
+      description: "Learn how to develop new components",
       type: "documentation",
       url: "/docs/components",
-      category: "文档"
+      category: "Documentation"
     },
     {
       id: "3",
-      title: "CardNav 组件",
-      description: "顶部导航菜单组件",
+      title: "CardNav Component",
+      description: "Top navigation menu component",
       type: "component",
       url: "/components/cardnav",
-      category: "组件"
+      category: "Components"
     },
     {
       id: "4",
-      title: "用户认证 API",
-      description: "用户登录和注册相关接口",
+      title: "User Authentication API",
+      description: "User login and registration related interfaces",
       type: "api",
       url: "/api/auth",
       category: "API"
     },
     {
       id: "5",
-      title: "仪表板页面",
-      description: "用户主控制台页面",
+      title: "Dashboard Page",
+      description: "User main console page",
       type: "page",
       url: "/dashboard",
-      category: "页面"
+      category: "Pages"
     }
   ];
 
-  // 搜索逻辑
+  // Search logic
   const performSearch = (query: string) => {
     if (!query.trim()) {
       setSearchResults([]);
@@ -87,7 +87,7 @@ const GlobalSearch: React.FC<GlobalSearchProps> = ({
 
     setIsSearching(true);
     
-    // 模拟搜索延迟
+    // Simulate search delay
     setTimeout(() => {
       const results = mockSearchData.filter(item =>
         item.title.toLowerCase().includes(query.toLowerCase()) ||
@@ -100,7 +100,7 @@ const GlobalSearch: React.FC<GlobalSearchProps> = ({
     }, 300);
   };
 
-  // 处理搜索输入
+  // Handle search input
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value;
     setSearchQuery(query);
@@ -108,7 +108,7 @@ const GlobalSearch: React.FC<GlobalSearchProps> = ({
     setSelectedIndex(-1);
   };
 
-  // 处理键盘导航
+  // Handle keyboard navigation
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (!searchResults.length) return;
 
@@ -139,23 +139,23 @@ const GlobalSearch: React.FC<GlobalSearchProps> = ({
     }
   };
 
-  // 处理结果点击
+  // Handle result click
   const handleResultClick = (result: SearchResult) => {
     onSearch?.(result.title);
     onClose();
-    // 这里可以添加实际的导航逻辑
-    console.log("导航到:", result.url);
+    // Here you can add actual navigation logic
+    console.log("Navigate to:", result.url);
   };
 
-  // 聚焦到输入框
+  // Focus on input
   useEffect(() => {
     if (isOpen) {
-      // 聚焦到输入框
+      // Focus on input
       setTimeout(() => inputRef.current?.focus(), 100);
     }
   }, [isOpen]);
 
-  // 处理 ESC 键关闭
+  // Handle ESC key to close
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape" && isOpen) {
@@ -194,7 +194,7 @@ const GlobalSearch: React.FC<GlobalSearchProps> = ({
         )}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* 搜索输入框 */}
+        {/* Search Input */}
         <div className="relative">
           <div className="relative">
             <input
@@ -203,7 +203,7 @@ const GlobalSearch: React.FC<GlobalSearchProps> = ({
               value={searchQuery}
               onChange={handleSearchChange}
               onKeyDown={handleKeyDown}
-              placeholder="搜索页面、组件、文档、API..."
+              placeholder="Search pages, components, docs, APIs..."
               className="w-full px-6 py-4 text-lg bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/40 transition-all duration-300 hover:bg-white/15 hover:border-white/30 hover:scale-[1.02] focus:scale-[1.02]"
             />
             <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
@@ -218,7 +218,7 @@ const GlobalSearch: React.FC<GlobalSearchProps> = ({
           </div>
         </div>
 
-        {/* 搜索结果 */}
+        {/* Search Results */}
         {searchQuery && (
           <div className="mt-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl overflow-hidden">
             {searchResults.length > 0 ? (
@@ -279,27 +279,27 @@ const GlobalSearch: React.FC<GlobalSearchProps> = ({
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
                 <p className="text-white/60">
-                  {isSearching ? "搜索中..." : "未找到相关结果"}
+                  {isSearching ? "Searching..." : "No results found"}
                 </p>
                 <p className="text-white/40 text-sm mt-1">
-                  尝试使用不同的关键词
+                  Try using different keywords
                 </p>
               </div>
             )}
           </div>
         )}
 
-        {/* 搜索提示 */}
+        {/* Search Tips */}
         {!searchQuery && (
           <div className="mt-6 text-center">
             <div className="grid grid-cols-2 gap-4 max-w-md mx-auto">
               <div className="px-4 py-3 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 hover:scale-105 transition-all duration-300">
-                <div className="text-white/60 text-sm mb-1">快捷键</div>
+                <div className="text-white/60 text-sm mb-1">Shortcut</div>
                 <div className="text-white/40 text-xs">Ctrl + K</div>
               </div>
               <div className="px-4 py-3 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 hover:scale-105 transition-all duration-300">
-                <div className="text-white/60 text-sm mb-1">搜索范围</div>
-                <div className="text-white/40 text-xs">全站内容</div>
+                <div className="text-white/60 text-sm mb-1">Search Scope</div>
+                <div className="text-white/40 text-xs">Site-wide</div>
               </div>
             </div>
           </div>

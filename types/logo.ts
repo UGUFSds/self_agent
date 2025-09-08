@@ -1,6 +1,6 @@
 import React from "react";
 
-// Logo 项目类型定义
+// Logo item type definition
 export interface LogoItem {
   node: React.ReactNode;
   title: string;
@@ -14,7 +14,7 @@ export interface LogoItem {
   alt?: string;
 }
 
-// Logo 循环组件属性
+// Logo loop component properties
 export interface LogoLoopProps {
   logos: LogoItem[];
   speed?: number;

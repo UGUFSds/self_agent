@@ -60,9 +60,9 @@ const StarBorder = <T extends React.ElementType = "button">({
         }}
       ></div>
       <div className="relative z-1 bg-black border border-gray-800 text-center text-[13px] py-[10px] px-[18px] rounded-[14px] font-normal transition-all duration-500 group overflow-hidden">
-        {/* 悬停时的边框发光 */}
+        {/* Border glow on hover */}
         <div className="absolute inset-0 rounded-[14px] opacity-0 group-hover:opacity-100 transition-all duration-500 border-2 border-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 shadow-[0_0_8px_rgba(147,51,234,0.1)]"></div>
-        {/* 文字内容 */}
+        {/* Text content */}
         <div className="relative z-10 text-gray-400 group-hover:text-white group-hover:drop-shadow-[0_0_5px_rgba(255,255,255,0.4)] transition-all duration-500">
           {children}
         </div>

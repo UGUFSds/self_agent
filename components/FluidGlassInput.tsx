@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { InputComponentProps } from "@/types/components";
 
 interface FluidGlassInputProps extends InputComponentProps {
-  // 特定于 FluidGlassInput 的属性
+  // Properties specific to FluidGlassInput
   glassIntensity?: number;
   borderIntensity?: number;
 }
@@ -51,7 +51,7 @@ const FluidGlassInput: React.FC<FluidGlassInputProps> = ({
       onClick={onClick}
       {...props}
     >
-      {/* 玻璃材质背景 */}
+      {/* Glass material background */}
       <div
         className="absolute inset-0 rounded-2xl transition-all duration-300 ease-in-out"
         style={{
@@ -73,7 +73,7 @@ const FluidGlassInput: React.FC<FluidGlassInputProps> = ({
         }}
       />
 
-      {/* 输入框 */}
+      {/* Input field */}
       <input
         type="text"
         value={inputValue}

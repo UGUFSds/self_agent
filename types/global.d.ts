@@ -1,36 +1,36 @@
-// 全局类型定义
+// Global type definitions
 declare global {
-  // 扩展 Window 接口
+  // Extend Window interface
   interface Window {
-    // 添加自定义属性
+    // Add custom properties
     gtag?: (...args: any[]) => void;
     dataLayer?: any[];
   }
 
-  // 扩展 NodeJS 环境变量
+  // Extend NodeJS environment variables
   namespace NodeJS {
     interface ProcessEnv {
-      // API 相关
+      // API related
       NEXT_PUBLIC_API_BASE_URL: string;
       NEXT_PUBLIC_API_TIMEOUT?: string;
 
-      // 应用相关
+      // Application related
       NEXT_PUBLIC_APP_NAME?: string;
       NEXT_PUBLIC_APP_VERSION?: string;
       NODE_ENV: "development" | "production" | "test";
 
-      // 功能开关
+      // Feature flags
       NEXT_PUBLIC_ENABLE_ANALYTICS?: string;
       NEXT_PUBLIC_ENABLE_DEBUG?: string;
 
-      // 第三方服务
+      // Third-party services
       NEXT_PUBLIC_GOOGLE_ANALYTICS_ID?: string;
       NEXT_PUBLIC_SENTRY_DSN?: string;
     }
   }
 }
 
-// 组件 Props 通用类型
+// Common component Props types
 export interface BaseComponentProps {
   className?: string;
   children?: React.ReactNode;
@@ -38,7 +38,7 @@ export interface BaseComponentProps {
   "data-testid"?: string;
 }
 
-// 样式相关类型
+// Style related types
 export type Size = "xs" | "sm" | "md" | "lg" | "xl";
 export type Color =
   | "primary"
@@ -49,14 +49,14 @@ export type Color =
   | "info";
 export type Variant = "solid" | "outline" | "ghost" | "link";
 
-// 动画相关类型
+// Animation related types
 export interface AnimationConfig {
   duration: number;
   easing: string;
   delay?: number;
 }
 
-// 响应式断点类型
+// Responsive breakpoint types
 export type Breakpoint = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
 
 export {};

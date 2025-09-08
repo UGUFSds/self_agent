@@ -21,13 +21,13 @@ import { BRAND_CONFIG, LAYOUT_CONFIG, BUTTON_CONFIG } from "@/constants/ui";
 import { USER_MESSAGES } from "@/constants/messages";
 
 export default function Home() {
-  // 使用常量配置
+  // Use constant configurations
   const navItems = NAV_ITEMS;
   
-  // 全局搜索状态
+  // Global search state
   const [isGlobalSearchOpen, setIsGlobalSearchOpen] = useState(false);
 
-  // 键盘快捷键支持 (Ctrl+K)
+  // Keyboard shortcut support (Ctrl+K)
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
@@ -47,7 +47,7 @@ export default function Home() {
       className={LAYOUT_CONFIG.container.className}
       style={{ backgroundColor: LAYOUT_CONFIG.container.backgroundColor }}
     >
-      {/* 品牌 Logo - 左上角 */}
+      {/* Brand Logo - Top Left */}
       <div className={LAYOUT_CONFIG.brand.position}>
         <div
           className={LAYOUT_CONFIG.brand.className}
@@ -57,7 +57,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* 菜单栏 */}
+      {/* Navigation Menu */}
       <div className={LAYOUT_CONFIG.menu.position}>
         <CardNav
           logo="/logo.svg"
@@ -75,7 +75,7 @@ export default function Home() {
                 className="card-nav-cta-button inline-flex items-center justify-center border-0 rounded-[calc(0.75rem-0.2rem)] px-4 py-2 font-medium cursor-pointer transition-all duration-300 backdrop-blur-sm bg-white/20 border border-white/30 hover:bg-white/30 hover:shadow-lg hover:shadow-white/20 hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] text-xl"
                 style={{ color: "#000000" }}
                 onClick={() => {
-                  // TODO: 实现文档查看功能
+                  // TODO: Implement documentation viewing functionality
                   alert(USER_MESSAGES.doc);
                 }}
               >
@@ -84,7 +84,7 @@ export default function Home() {
               <div
                 className="cursor-pointer transition-all duration-300 hover:scale-105 hover:opacity-80"
                 onClick={() => {
-                  // TODO: 实现API文档功能
+                  // TODO: Implement API documentation functionality
                   alert(USER_MESSAGES.api);
                 }}
               >
@@ -107,7 +107,7 @@ export default function Home() {
           transform: "scale(1.8)",
         }}
       >
-        {/* 主题文字、搜索框和按钮 */}
+        {/* Main content: text, search box and buttons */}
         <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center text-white font-normal leading-tight pointer-events-none">
           <div className="mb-6 mt-12">
             <div className="text-2xl mb-2 font-sans tracking-tight">
@@ -115,19 +115,19 @@ export default function Home() {
             </div>
           </div>
 
-          {/* AI 大模型输入框 */}
+          {/* AI Model Input Box */}
           <div className="pointer-events-auto z-20 mb-4 -mt-2">
             <FluidGlassInput
               placeholder="Ask AI anything you want to know..."
               className="w-96 h-10"
               onClick={() => {
-                // TODO: 实现AI大模型对话功能
+                // TODO: Implement AI model chat functionality
                 alert(USER_MESSAGES.aiChat);
               }}
             />
           </div>
 
-          {/* 按钮组 */}
+          {/* Button Group */}
           <div className="pointer-events-auto z-20 flex gap-4 items-center mt-2">
             <div className="relative group">
               <StarBorder
@@ -136,20 +136,20 @@ export default function Home() {
                 speed="5s"
                 className="[&>div]:px-[14px] [&>div]:py-[8px] [&>div]:text-[11px]"
                 onClick={() => {
-                  // TODO: 实现用户开始使用流程
+                  // TODO: Implement user onboarding flow
                   alert(USER_MESSAGES.getStarted);
                 }}
               >
                 <span className="text-[11px] font-normal">Get Started</span>
               </StarBorder>
 
-              {/* 下拉菜单 */}
+              {/* Dropdown Menu */}
               <div className="absolute top-full left-0 mt-1 w-24 opacity-0 invisible scale-95 group-hover:opacity-100 group-hover:visible group-hover:scale-100 transition-all duration-200 ease-out z-50">
                 <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-md overflow-hidden shadow-lg shadow-black/20">
                   <button
                     className="w-full px-2 py-1.5 text-left text-white/90 text-[10px] hover:bg-white/10 hover:text-white transition-all duration-150 ease-out"
                     onClick={() => {
-                      // TODO: 实现用户认证登录
+                      // TODO: Implement user authentication login
                       alert(USER_MESSAGES.signIn);
                     }}
                   >
@@ -158,7 +158,7 @@ export default function Home() {
                   <button
                     className="w-full px-2 py-1.5 text-left text-white/90 text-[10px] hover:bg-white/10 hover:text-white transition-all duration-150 ease-out"
                     onClick={() => {
-                      // TODO: 实现用户认证登录
+                      // TODO: Implement user authentication login
                       alert(USER_MESSAGES.signIn);
                     }}
                   >
@@ -171,7 +171,7 @@ export default function Home() {
             <button
               className={BUTTON_CONFIG.learnMore.className}
               onClick={() => {
-                // TODO: 实现产品介绍页面
+                // TODO: Implement product introduction page
                 alert(USER_MESSAGES.learnMore);
               }}
             >
@@ -180,25 +180,25 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Orb 组件 */}
+        {/* Orb Component */}
         <Orb
           hoverIntensity={1.2}
           rotateOnHover={true}
           hue={0}
           forceHoverState={false}
           onClick={() => {
-            // TODO: 实现Orb 3D交互功能
+            // TODO: Implement Orb 3D interaction functionality
             alert(USER_MESSAGES.orbInteraction);
           }}
         />
       </div>
 
-      {/* 全局搜索按钮 - 右上角 */}
+      {/* Global Search Button - Top Right */}
       <div className={LAYOUT_CONFIG.searchButton.position}>
         <button
           className={LAYOUT_CONFIG.searchButton.className}
           onClick={() => setIsGlobalSearchOpen(true)}
-          title="全局搜索 (Ctrl+K)"
+          title="Global Search (Ctrl+K)"
         >
           <svg
             className="w-6 h-6 text-white"
@@ -216,7 +216,7 @@ export default function Home() {
         </button>
       </div>
 
-      {/* LogoLoop 组件 - 页面右下方 */}
+      {/* LogoLoop Component - Bottom Right */}
       <div className={LAYOUT_CONFIG.logoLoop.position}>
         <div className="text-white text-sm font-sans tracking-tight mb-3 text-center opacity-70 backdrop-blur-sm bg-white/5 border border-white/10 rounded-lg px-3 py-1">
           Partners
@@ -267,12 +267,12 @@ export default function Home() {
         />
       </div>
 
-      {/* 全局搜索组件 */}
+      {/* Global Search Component */}
       <GlobalSearch
         isOpen={isGlobalSearchOpen}
         onClose={() => setIsGlobalSearchOpen(false)}
         onSearch={(_query) => {
-          // TODO: 实现全局搜索逻辑
+          // TODO: Implement global search logic
         }}
       />
     </div>
