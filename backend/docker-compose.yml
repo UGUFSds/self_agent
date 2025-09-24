@@ -1,0 +1,94 @@
+version: '3.8'
+
+services:
+  # PostgreSQL数据库
+  postgres:
+    image: postgres:15-alpine
+    container_name: planning_agent_postgres
+    environment:
+      POSTGRES_DB: planning_agent
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - planning_agent_network
+
+  # Redis缓存
+  redis:
+    image: redis:7-alpine
+    container_name: planning_agent_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - planning_agent_network
+
+  # FastAPI应用
+  api:
+    build: .
+    container_name: planning_agent_api
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://user:password@postgres:5432/planning_agent
+      - REDIS_URL=redis://redis:6379/0
+      - DEBUG=true
+    volumes:
+      - ./app:/app/app
+      - ./uploads:/app/uploads
+      - ./logs:/app/logs
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - planning_agent_network
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+  # Celery Worker
+  celery:
+    build: .
+    container_name: planning_agent_celery
+    environment:
+      - DATABASE_URL=postgresql://user:password@postgres:5432/planning_agent
+      - REDIS_URL=redis://redis:6379/0
+      - CELERY_BROKER_URL=redis://redis:6379/1
+      - CELERY_RESULT_BACKEND=redis://redis:6379/2
+    volumes:
+      - ./app:/app/app
+      - ./uploads:/app/uploads
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - planning_agent_network
+    command: celery -A app.core.celery worker --loglevel=info
+
+  # Celery Beat (定时任务)
+  celery-beat:
+    build: .
+    container_name: planning_agent_celery_beat
+    environment:
+      - DATABASE_URL=postgresql://user:password@postgres:5432/planning_agent
+      - REDIS_URL=redis://redis:6379/0
+      - CELERY_BROKER_URL=redis://redis:6379/1
+      - CELERY_RESULT_BACKEND=redis://redis:6379/2
+    volumes:
+      - ./app:/app/app
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - planning_agent_network
+    command: celery -A app.core.celery beat --loglevel=info
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  planning_agent_network:
+    driver: bridge
